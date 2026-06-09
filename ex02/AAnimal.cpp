@@ -1,28 +1,25 @@
 #include "AAnimal.hpp"
 
 AAnimal::AAnimal() : type("AAnimal") {
-    std::cout << "AAnimal default constructor called" << std::endl;
+    std::cout << "AAnimal: Constructor por defecto." << std::endl;
 }
 
-AAnimal::AAnimal(const AAnimal& other) {
-    std::cout << "AAnimal copy constructor called" << std::endl;
-    *this = other;
+AAnimal::AAnimal(const AAnimal& src) {
+    std::cout << "AAnimal: Constructor de copia." << std::endl;
+    *this = src;
 }
 
-AAnimal& AAnimal::operator=(const AAnimal& other) {
-    std::cout << "AAnimal assignment operator called" << std::endl;
-    if (this != &other) {
-        this->type = other.type;
+AAnimal& AAnimal::operator=(const AAnimal& src) {
+    std::cout << "AAnimal: Operador de asignación." << std::endl;
+    if (this != &src) {
+        this->type = src.type;
     }
     return *this;
 }
 
 AAnimal::~AAnimal() {
-    std::cout << "AAnimal destructor called" << std::endl;
+    std::cout << "AAnimal: Destructor." << std::endl;
 }
-
-// NOTA: Ya no implementamos makeSound() aquí porque es virtual pura (= 0)
-// y obliga a los hijos a tener su propia implementación.
 
 std::string AAnimal::getType() const {
     return this->type;

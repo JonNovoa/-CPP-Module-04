@@ -1,7 +1,7 @@
-NAME    = abstract_animal
+NAME    = interface_recap
 CC      = c++
 CFLAGS  = -Wall -Wextra -Werror -std=c++98
-SRCS    = main.cpp AAnimal.cpp Brain.cpp Dog.cpp Cat.cpp
+SRCS    = main.cpp AMateria.cpp Ice.cpp Cure.cpp Character.cpp MateriaSource.cpp
 OBJS    = $(SRCS:.cpp=.o)
 
 all: $(NAME)

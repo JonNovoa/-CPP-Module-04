@@ -10,12 +10,11 @@ private:
 
 public:
     Dog();
-    Dog(const Dog& other);
-    Dog& operator=(const Dog& other);
+    Dog(const Dog& src);
+    Dog& operator=(const Dog& src);
     virtual ~Dog();
 
-    virtual void makeSound() const; // Implementa la función obligatoria del padre
-    
+    virtual void makeSound() const;
     void setIdea(int index, const std::string& idea);
     std::string getIdea(int index) const;
 };

@@ -1,49 +1,40 @@
-#include "Cat.cpp"
 #include "Cat.hpp"
 
 Cat::Cat() {
+    std::cout << "Cat: Constructor por defecto." << std::endl;
     this->type = "Cat";
     this->_brain = new Brain();
-    std::cout << "Cat constructor called" << std::endl;
 }
 
-Cat::Cat(const Cat& other) : AAnimal(other), _brain(NULL) {
-    std::cout << "Cat copy constructor called" << std::endl;
-    if (other._brain)
-        this->_brain = new Brain(*other._brain);
-    else
-        this->_brain = new Brain();
+Cat::Cat(const Cat& src) : AAnimal(src) {
+    std::cout << "Cat: Constructor de copia." << std::endl;
+    this->_brain = new Brain(*src._brain); // Copia profunda
 }
 
-Cat& Cat::operator=(const Cat& other) {
-    std::cout << "Cat assignment operator called" << std::endl;
-    if (this != &other) {
-        AAnimal::operator=(other);
+Cat& Cat::operator=(const Cat& src) {
+    std::cout << "Cat: Operador de asignación." << std::endl;
+    if (this != &src) {
+        this->type = src.type;
         delete this->_brain;
-        if (other._brain)
-            this->_brain = new Brain(*other._brain);
-        else
-            this->_brain = new Brain();
+        this->_brain = new Brain(*src._brain); // Copia profunda
     }
     return *this;
 }
 
 Cat::~Cat() {
+    std::cout << "Cat: Destructor." << std::endl;
     delete this->_brain;
-    std::cout << "Cat destructor called" << std::endl;
 }
 
 void Cat::makeSound() const {
-    std::cout << "Meow... Meow..." << std::endl;
+    std::cout << "¡Miau, miau!" << std::endl;
 }
 
 void Cat::setIdea(int index, const std::string& idea) {
-    if (index >= 0 && index < 100)
-        this->_brain->ideas[index] = idea;
+    if (index >= 0 && index < 100) this->_brain->ideas[index] = idea;
 }
 
 std::string Cat::getIdea(int index) const {
-    if (index >= 0 && index < 100)
-        return this->_brain->ideas[index];
+    if (index >= 0 && index < 100) return this->_brain->ideas[index];
     return "";
 }

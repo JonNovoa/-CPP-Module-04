@@ -10,14 +10,12 @@ protected:
 
 public:
     AAnimal();
-    AAnimal(const AAnimal& other);
-    AAnimal& operator=(const AAnimal& other);
+    AAnimal(const AAnimal& src);
+    AAnimal& operator=(const AAnimal& src);
     virtual ~AAnimal();
 
-    // CRÍTICO: El `= 0` la convierte en una función VIRTUAL PURA.
-    // Esto hace que la clase AAnimal sea ABSTRACTA automáticamente.
+    // El "= 0" convierte a la clase en Abstracta (no instanciable)
     virtual void makeSound() const = 0; 
-    
     std::string getType() const;
 };
 

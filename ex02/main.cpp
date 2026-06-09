@@ -1,29 +1,27 @@
-#include "AAnimal.hpp"
 #include "Dog.hpp"
 #include "Cat.hpp"
 
 int main() {
-    std::cout << "=== PROVING THAT AANIMAL IS NOT INSTANTIABLE ===" << std::endl;
-    // Si descommantas la línea de abajo, el código NO COMPILARÁ.
-    // Esto demuestra que hemos cumplido el objetivo del ejercicio.
-    // const AAnimal* testAbstract = new AAnimal(); 
+    std::cout << "=== 1. INTENTAR INSTANCIAR AANIMAL ===" << std::endl;
+    // Si descomentas la línea de abajo, el código NO DEBE COMPILAR.
+    // Esa es la prueba de que el ejercicio está bien hecho.
+    // AAnimal* prueba = new AAnimal(); 
 
-    std::cout << "AAnimal cannot be instantiated directly! (Tested via code comment)" << std::endl;
+    std::cout << "Descomenta la línea en main.cpp si quieres comprobar que el compilador lo bloquea." << std::endl;
 
-    std::cout << "\n=== WORKING WITH POINTERS TO ABSTRACT CLASS ===" << std::endl;
-    // El uso de punteros a la clase abstracta sí está permitido y funciona igual que antes
-    const AAnimal* doggy = new Dog();
-    const AAnimal* kitty = new Cat();
+    std::cout << "\n=== 2. CREANDO POLIMORFISMO VALIDO ===" << std::endl;
+    const AAnimal* i = new Cat();
+    const AAnimal* j = new Dog();
 
-    std::cout << doggy->getType() << " says: ";
-    doggy->makeSound();
-    
-    std::cout << kitty->getType() << " says: ";
-    kitty->makeSound();
+    std::cout << "\n=== 3. COMPROBANDO SONIDOS ===" << std::endl;
+    std::cout << i->getType() << " dice: ";
+    i->makeSound();
+    std::cout << j->getType() << " dice: ";
+    j->makeSound();
 
-    std::cout << "\n=== CLEANING UP ===" << std::endl;
-    delete doggy;
-    delete kitty;
+    std::cout << "\n=== 4. LIBERANDO MEMORIA ===" << std::endl;
+    delete i;
+    delete j;
 
     return 0;
 }

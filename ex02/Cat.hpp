@@ -2,20 +2,21 @@
 #define CAT_HPP
 
 #include "AAnimal.hpp"
-#include <string>
+#include "Brain.hpp"
 
 class Cat : public AAnimal {
-    private:
-        // _brain, etc.
-    public:
-        Cat();
-        Cat(const Cat& other);
-        Cat& operator=(const Cat& other);
-        virtual ~Cat();
+private:
+    Brain* _brain;
 
-        void makeSound() const;
-        void setIdea(int index, const std::string& idea);
-        std::string getIdea(int index) const;
+public:
+    Cat();
+    Cat(const Cat& src);
+    Cat& operator=(const Cat& src);
+    virtual ~Cat();
+
+    virtual void makeSound() const;
+    void setIdea(int index, const std::string& idea);
+    std::string getIdea(int index) const;
 };
 
 #endif
